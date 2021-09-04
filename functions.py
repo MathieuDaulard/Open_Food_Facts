@@ -78,8 +78,9 @@ def display_factorial_planes(X_projected, n_comp, pca, axis_ranks, labels=None, 
                 np_illustrative_var = np.array(illustrative_var)
                 for value in np.unique(illustrative_var):
                     selected = np.where(np_illustrative_var == value)
-                    for i,(x,y) in enumerate(X_projected[:,[d1,d2]]):
-                        plt.text(x, y+0.2, labels[i],fontsize='14', ha='center',va='center',color="lightskyblue") #couleur[illustrative_var[labels[i]]]
+                    if len(labels) < 50:
+                        for i,(x,y) in enumerate(X_projected[:,[d1,d2]]):
+                    	    plt.text(x, y+0.2, labels[i],fontsize='14', ha='center',va='center',color="lightskyblue") #couleur[illustrative_var[labels[i]]]
                     plt.scatter(X_projected[selected, d1], X_projected[selected, d2], alpha=alpha, label=value)
                 plt.legend()
 
